@@ -4,6 +4,7 @@ import * as cors from "cors";
 
 import * as bodyParser from "body-parser";
 import NewsController from "./controllers/newsController";
+import Auth from "./infra/auth";
 
 class StartUp {
   public app: express.Application;
@@ -39,6 +40,8 @@ class StartUp {
     this.app.route("/").get((req, res) => {
       res.send({ version: "0.0.1" });
     });
+
+    this.app.use(Auth.validate);
 
     //new
     this.app.route("/api/v1/news").get(NewsController.get);
