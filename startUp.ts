@@ -5,6 +5,7 @@ import * as cors from "cors";
 import * as bodyParser from "body-parser";
 import NewsController from "./controllers/newsController";
 import Auth from "./infra/auth";
+import Uploads from "./infra/uploads";
 
 class StartUp {
   public app: express.Application;
@@ -39,6 +40,14 @@ class StartUp {
   routes() {
     this.app.route("/").get((req, res) => {
       res.send({ version: "0.0.1" });
+    });
+
+    this.app.route("/uploads").post(Uploads.single("file"), (req, res) => {
+      try {
+        res.send("file sent with sucess!");
+      } catch (error) {
+        console.log("error", error);
+      }
     });
 
     this.app.use(Auth.validate);
