@@ -25,7 +25,7 @@ class NewsController {
         const _id = req.params.id;
         let news = req.body;
         newsService_1.default.update(_id, news)
-            .then(news => helper_1.default.sendResponse(res, HttpStatus.OK, ` News  foi atualizada com sucesso!`))
+            .then(news => helper_1.default.sendResponse(res, HttpStatus.OK, ` News foi atualizada com sucesso!`))
             .catch(error => console.error.bind(console, `Error ${error}`));
     }
     delete(req, res) {
