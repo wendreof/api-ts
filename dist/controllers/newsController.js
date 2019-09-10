@@ -25,49 +25,65 @@ class NewsController {
                         }
                         else {
                             let result = yield newsService_1.default.get();
-                            client.set("news1", JSON.stringify(res));
+                            client.set("news1", JSON.stringify(result));
                             client.expire("news1", 20);
-                            helper_1.default.sendResponse(res, HttpStatus.OK, res);
+                            helper_1.default.sendResponse(res, HttpStatus.OK, result);
                         }
                     });
                 });
             }
             catch (error) {
-                console.error();
+                console.error("error", error);
             }
         });
     }
     getById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _id = req.params.id;
-            newsService_1.default.getById(_id)
-                .then(news => helper_1.default.sendResponse(res, HttpStatus.OK, news))
-                .catch(error => console.error.bind(console, `Error ${error}`));
+            try {
+                const _id = req.params.id;
+                let result = yield newsService_1.default.getById(_id);
+                helper_1.default.sendResponse(res, HttpStatus.OK, result);
+            }
+            catch (error) {
+                console.error("error", error);
+            }
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let vm = req.body;
-            newsService_1.default.create(vm)
-                .then(news => helper_1.default.sendResponse(res, HttpStatus.OK, "Noticia cadastrada com sucesso!"))
-                .catch(error => console.error.bind(console, `Error ${error}`));
+            try {
+                let vm = req.body;
+                yield newsService_1.default.create(vm);
+                helper_1.default.sendResponse(res, HttpStatus.OK, `Notícia criada com sucesso!`);
+            }
+            catch (error) {
+                console.error("error", error);
+            }
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _id = req.params.id;
-            let news = req.body;
-            newsService_1.default.update(_id, news)
-                .then(news => helper_1.default.sendResponse(res, HttpStatus.OK, ` News foi atualizada com sucesso!`))
-                .catch(error => console.error.bind(console, `Error ${error}`));
+            try {
+                const _id = req.params.id;
+                let news = req.body;
+                yield newsService_1.default.update(_id, news);
+                helper_1.default.sendResponse(res, HttpStatus.OK, `News foi atualizada com sucesso!`);
+            }
+            catch (error) {
+                console.error("error", error);
+            }
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _id = req.params.id;
-            newsService_1.default.delete(_id)
-                .then(() => helper_1.default.sendResponse(res, HttpStatus.OK, "Noticia deletada com sucesso!"))
-                .catch(error => console.error.bind(console, `Error ${error}`));
+            try {
+                const _id = req.params.id;
+                yield newsService_1.default.delete(_id);
+                helper_1.default.sendResponse(res, HttpStatus.OK, "Noticia deletada com sucesso!");
+            }
+            catch (error) {
+                console.error("error", error);
+            }
         });
     }
 }
