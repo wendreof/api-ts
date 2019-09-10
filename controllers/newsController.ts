@@ -1,10 +1,28 @@
 import NewsService from "../services/newsService";
 import * as HttpStatus from "http-status";
+import * as redis from "redis";
 
 import Helper from "../infra/helper";
 
 class NewsController {
   get(req, res) {
+    let client = redis.createClient();
+
+    client.get("new", function(err, reply) {
+      if (reply) {
+        Helper.sendResponse(res, HttpStatus.OK, JSON.parse(reply));
+      } else {
+        NewsService.get()
+          .then(news => {
+            client.set("news", JSON.stringify(news));
+            client.expire("news", 20);
+
+            Helper.sendResponse(res, HttpStatus.OK, news);
+          })
+          .catch(error => console.error.bind(console, `Error ${error}`));
+      }
+    });
+
     NewsService.get()
       .then(news => Helper.sendResponse(res, HttpStatus.OK, news))
       .catch(error => console.error.bind(console, `Error ${error}`));
