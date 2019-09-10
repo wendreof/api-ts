@@ -8,24 +8,21 @@ class NewsController {
   get(req, res) {
     let client = redis.createClient();
 
-    client.get("new", function(err, reply) {
+    client.get("news1", function(err, reply) {
       if (reply) {
+        console.log("redis");
         Helper.sendResponse(res, HttpStatus.OK, JSON.parse(reply));
       } else {
         NewsService.get()
           .then(news => {
-            client.set("news", JSON.stringify(news));
-            // client.expire("news", 20);
-
+            console.log("db");
+            client.set("news1", JSON.stringify(news));
+            client.expire("news1", 2);
             Helper.sendResponse(res, HttpStatus.OK, news);
           })
           .catch(error => console.error.bind(console, `Error ${error}`));
       }
     });
-
-    NewsService.get()
-      .then(news => Helper.sendResponse(res, HttpStatus.OK, news))
-      .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
   getById(req, res) {
