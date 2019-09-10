@@ -15,7 +15,7 @@ class NewsController {
         NewsService.get()
           .then(news => {
             client.set("news", JSON.stringify(news));
-            client.expire("news", 20);
+            // client.expire("news", 20);
 
             Helper.sendResponse(res, HttpStatus.OK, news);
           })
