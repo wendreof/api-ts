@@ -5,27 +5,27 @@ import * as redis from "redis";
 import Helper from "../infra/helper";
 
 class NewsController {
-  get(req, res) {
-    let client = redis.createClient();
+  async get(req, res) {
+    try {
+      let client = redis.createClient();
 
-    client.get("news1", function(err, reply) {
-      if (reply) {
-        console.log("redis");
-        Helper.sendResponse(res, HttpStatus.OK, JSON.parse(reply));
-      } else {
-        NewsService.get()
-          .then(news => {
-            console.log("db");
-            client.set("news1", JSON.stringify(news));
-            client.expire("news1", 2);
-            Helper.sendResponse(res, HttpStatus.OK, news);
-          })
-          .catch(error => console.error.bind(console, `Error ${error}`));
-      }
-    });
+      await client.get("news1", async function(err, reply) {
+        if (reply) {
+          console.log("redis");
+          Helper.sendResponse(res, HttpStatus.OK, JSON.parse(reply));
+        } else {
+          let result = await NewsService.get();
+          client.set("news1", JSON.stringify(res));
+          client.expire("news1", 20);
+          Helper.sendResponse(res, HttpStatus.OK, res);
+        }
+      });
+    } catch (error) {
+      console.error();
+    }
   }
 
-  getById(req, res) {
+  async getById(req, res) {
     const _id = req.params.id;
 
     NewsService.getById(_id)
@@ -33,7 +33,7 @@ class NewsController {
       .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
-  create(req, res) {
+  async create(req, res) {
     let vm = req.body;
 
     NewsService.create(vm)
@@ -47,7 +47,7 @@ class NewsController {
       .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
-  update(req, res) {
+  async update(req, res) {
     const _id = req.params.id;
     let news = req.body;
 
@@ -62,7 +62,7 @@ class NewsController {
       .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
-  delete(req, res) {
+  async delete(req, res) {
     const _id = req.params.id;
 
     NewsService.delete(_id)
