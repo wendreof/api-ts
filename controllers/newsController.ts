@@ -3,6 +3,7 @@ import * as HttpStatus from "http-status";
 import * as redis from "redis";
 
 import Helper from "../infra/helper";
+import ExportFiles from "../infra/exportFiles";
 
 class NewsController {
   async get(req, res) {
@@ -31,7 +32,22 @@ class NewsController {
       let result = await NewsService.getById(_id);
       Helper.sendResponse(res, HttpStatus.OK, result);
     } catch (error) {
-      console.error("error", error);
+      console.error("error:", error);
+    }
+  }
+
+  async exportToCsv(req, res) {
+    try {
+      let response = await NewsService.get();
+      let filename = ExportFiles.tocsv(response);
+
+      Helper.sendResponse(
+        res,
+        HttpStatus.OK,
+        req.get("host") + "/exports/" + filename
+      );
+    } catch (error) {
+      console.error("error:", error);
     }
   }
 

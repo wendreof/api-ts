@@ -18,7 +18,7 @@ const opts = { fields };
 class ExportFiles {
   tocsv = function(news) {
     try {
-      const csv = json2csv.parseAsync(news, opts);
+      const csv = json2csv.parse(news, opts);
       const filename = uuid.v4() + ".csv";
       fs.writeFile("./exports/" + filename, csv, function(err) {
         if (err) throw err;
