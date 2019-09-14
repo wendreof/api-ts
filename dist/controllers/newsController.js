@@ -50,6 +50,20 @@ class NewsController {
             }
         });
     }
+    search(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const term = req.params.term;
+                const page = req.param("page") ? parseInt(req.param("page")) : 1;
+                const perPage = req.param("limit") ? parseInt(req.param("limit")) : 10;
+                let result = yield newsService_1.default.search(term, page, perPage);
+                helper_1.default.sendResponse(res, HttpStatus.OK, result);
+            }
+            catch (error) {
+                console.error("error:", error);
+            }
+        });
+    }
     exportToCsv(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

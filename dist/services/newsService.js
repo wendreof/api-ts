@@ -10,9 +10,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const newsRepository_1 = require("../repositories/newsRepository");
 class NewsService {
+    search(term, page, perPage) {
+        return newsRepository_1.default.find({
+            title: new RegExp(".*" + term + "*.", "i")
+        })
+            .skip((page - 1) * perPage)
+            .limit(perPage);
+    }
     get() {
         return __awaiter(this, void 0, void 0, function* () {
-            let result = yield newsRepository_1.default.find({ active: true }, "title hat img");
+            let result = yield newsRepository_1.default.find({ active: true }, "title hat img").limit(100);
             return result;
         });
     }

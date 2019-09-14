@@ -1,8 +1,19 @@
 import NewsRepository from "../repositories/newsRepository";
 
 class NewsService {
+  search(term, page, perPage) {
+    return NewsRepository.find({
+      title: new RegExp(".*" + term + "*.", "i")
+    })
+      .skip((page - 1) * perPage)
+      .limit(perPage);
+  }
+
   async get() {
-    let result = await NewsRepository.find({ active: true }, "title hat img");
+    let result = await NewsRepository.find(
+      { active: true },
+      "title hat img"
+    ).limit(100);
     return result;
   }
 
