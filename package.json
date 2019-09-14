@@ -4,11 +4,12 @@
     "main": "index.js",
     "scripts": {
         "compile": "tsc -w",
-        "start": "node ./dist/program.js"
+        "start": "nodemon ./dist/program.js"
     },
     "license": "MIT",
     "dependencies": {
         "@types/body-parser": "^1.17.0",
+        "@types/compression": "^1.0.1",
         "@types/cors": "^2.8.4",
         "@types/express": "^4.16.0",
         "@types/http-status": "^0.2.30",
@@ -19,12 +20,14 @@
         "@types/redis": "^2.8.11",
         "@types/request": "^2.48.3",
         "body-parser": "^1.18.3",
+        "compression": "^1.7.4",
         "cors": "^2.8.5",
         "express": "^4.16.4",
         "http-status": "^1.3.1",
         "jsonwebtoken": "^8.4.0",
         "mongoose": "^5.6.11",
         "multer": "^1.4.1",
+        "nodemon": "^1.19.2",
         "redis": "^2.8.0",
         "request": "^2.88.0",
         "ts-node": "^7.0.1",

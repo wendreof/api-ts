@@ -1,11 +1,12 @@
 import * as express from "express";
 import Database from "./infra/db";
 import * as cors from "cors";
+import * as compression from "compression";
 
 import * as bodyParser from "body-parser";
-import NewsController from "./controllers/newsController";
 import Auth from "./infra/auth";
 import Uploads from "./infra/uploads";
+import newsRouter from "./router/newsRouter";
 
 class StartUp {
   public app: express.Application;
@@ -35,6 +36,7 @@ class StartUp {
     this.enableCors();
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(compression());
   }
 
   routes() {
@@ -50,14 +52,10 @@ class StartUp {
       }
     });
 
-    this.app.use(Auth.validate);
+    // this.app.use(Auth.validate);
 
     //new
-    this.app.route("/api/v1/news").get(NewsController.get);
-    this.app.route("/api/v1/news/:id").get(NewsController.getById);
-    this.app.route("/api/v1/news").post(NewsController.create);
-    this.app.route("/api/v1/news/:id").put(NewsController.update);
-    this.app.route("/api/v1/news/:id").delete(NewsController.delete);
+    this.app.use("/", newsRouter);
   }
 }
 
