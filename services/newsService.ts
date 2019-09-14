@@ -2,7 +2,7 @@ import NewsRepository from "../repositories/newsRepository";
 
 class NewsService {
   async get() {
-    let result = await NewsRepository.find({});
+    let result = await NewsRepository.find({ active: true }, "title hat img");
     return result;
   }
 

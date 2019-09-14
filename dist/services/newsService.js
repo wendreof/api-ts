@@ -12,7 +12,7 @@ const newsRepository_1 = require("../repositories/newsRepository");
 class NewsService {
     get() {
         return __awaiter(this, void 0, void 0, function* () {
-            let result = yield newsRepository_1.default.find({});
+            let result = yield newsRepository_1.default.find({ active: true }, "title hat img");
             return result;
         });
     }
