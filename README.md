@@ -1,6 +1,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/wendreof/api-ts)](https://github.com/wendreof/api-ts/issues)
 [![GitHub forks](https://img.shields.io/github/forks/wendreof/api-ts)](https://github.com/wendreof/api-ts/network)
 [![GitHub stars](https://img.shields.io/github/stars/wendreof/api-ts)](https://github.com/wendreof/api-ts/stargazers)
+[![GitHub last commit](https://img.shields.io/github/last-commit/wendreof/api-ts)](https://github.com/wendreof/api-ts/commits/master)
 
 
 docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/mongodb
