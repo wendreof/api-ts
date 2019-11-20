@@ -22,7 +22,7 @@ This project is a REST API made in TypeScript (JavaScript superset) with Docker 
 
 - Clonning the repository
 
-`git clone wendreof/api-ts`
+`git clone https://github.com/wendreof/api-ts.git`
 
 Get Docker on https://www.docker.com/ to run the following steps.
 
