@@ -11,6 +11,7 @@
     <a href="#motivation">Motivation</a> &bull;
     <a href="#installation">Installation</a> &bull;
     <a href="#running">Running</a> &bull;
+     <a href="#running">Routes</a> &bull;
     <a href="#license">License</a> 
 </p>
 
@@ -56,10 +57,11 @@ Get Docker on https://www.docker.com/ to run the following steps.
 
 - Remove
 
-`localhost:3050/api/v1/news/ID`
+`localhost:3050/api/v1/news/IDHASHHERE`
 
 - Put
-`localhost:3050/api/v1/news/ID`
+
+`localhost:3050/api/v1/news/IDHASHHERE`
 
 
 ## License
