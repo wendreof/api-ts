@@ -26,7 +26,9 @@ You will need get Docker: https://www.docker.com/ to run the following steps.
 
 - Turning up
 `docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/mongodb`
+
 `docker run -d -p 6379:6379 redis`
+
 `docker exec -it redis redis-cli`
  
 `docker build .`
@@ -37,7 +39,10 @@ You will need get Docker: https://www.docker.com/ to run the following steps.
 
 `npm start`
 
-Now
+Now, the server is running on port 3050
+<p align="center">
+ <img src="uploads/shot1.png" width="250"/>
+</p>
 
 
 
