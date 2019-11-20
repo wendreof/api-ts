@@ -44,7 +44,7 @@ Get Docker on https://www.docker.com/ to run the following steps.
 
 `npm start`
 
-- The server is running on port 3050 and is available on browser:
+- The server is running on port 3050, available on browser and will return the API's version:
 <p align="left">
  <img src="uploads/shot1.png" width="500"/>
 </p>
