@@ -11,12 +11,12 @@
     <a href="#motivation">Motivation</a> &bull;
     <a href="#installation">Installation</a> &bull;
     <a href="#running">Running</a> &bull;
-     <a href="#running">Routes</a> &bull;
+     <a href="#routes">Routes</a> &bull;
     <a href="#license">License</a> 
 </p>
 
 ## Motivation
-This project is a REST API made in TypeScript (JavaScript super set) with Docker containers, Redis to caching and MongoDB as database.
+This project is a REST API made in TypeScript (JavaScript superset) with Docker containers, Redis to caching and MongoDB as database.
 
 ## Installation
 
@@ -55,11 +55,11 @@ Get Docker on https://www.docker.com/ to run the following steps.
 
 `localhost:3050/api/v1/news`
 
-- Remove
+- DELETE
 
 `localhost:3050/api/v1/news/IDHASHHERE`
 
-- Put
+- PUT
 
 `localhost:3050/api/v1/news/IDHASHHERE`
 
