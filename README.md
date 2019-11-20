@@ -10,7 +10,7 @@
 <p align="center">
     <a href="#motivation">Motivation</a> &bull;
     <a href="#installation">Installation</a> &bull;
-    <a href="#starting">Starting</a> &bull;
+    <a href="#starting">Running</a> &bull;
     <a href="#license">License</a> 
 </p>
 
@@ -19,20 +19,25 @@ This repository is a REST API made em TypeScript with Docker, Redis and MongoDB.
 
 ## Installation
 
-Clone the project
-- `git clone wendreof/api-ts`
+- Clone the project
+`git clone wendreof/api-ts`
 
-- You will need get Docker: https://www.docker.com/ to run the following steps.
+You will need get Docker: https://www.docker.com/ to run the following steps.
 
-- `docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/mongodb
-- `docker run -d -p 6379:6379 redis`
-- `docker exec -it redis redis-cli`
+- Turning up
+`docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/mongodb`
+`docker run -d -p 6379:6379 redis`
+`docker exec -it redis redis-cli`
  
-- `docker build .`
+`docker build .`
 
-- `npm run compile`
+## Running
 
-- `npm start`
+`npm run compile`
+
+`npm start`
+
+Now
 
 
 
