@@ -10,7 +10,7 @@
 <p align="center">
     <a href="#motivation">Motivation</a> &bull;
     <a href="#installation">Installation</a> &bull;
-    <a href="#starting">Running</a> &bull;
+    <a href="#running">Running</a> &bull;
     <a href="#license">License</a> 
 </p>
 
@@ -19,10 +19,11 @@ This project is a REST API made in TypeScript (JavaScript super set) with Docker
 
 ## Installation
 
-- Clone the project
+- Clonning the repository
+
 `git clone wendreof/api-ts`
 
-You will need get Docker: https://www.docker.com/ to run the following steps.
+Get Docker on https://www.docker.com/ to run the following steps.
 
 - Turning up
 
@@ -36,14 +37,30 @@ You will need get Docker: https://www.docker.com/ to run the following steps.
 
 ## Running
 
+- Starting commands
+
 `npm run compile`
 
 `npm start`
 
-- Now, the server is running on port 3050 and is available on browser
-<p align="center">
+- The server is running on port 3050 and is available on browser:
+<p align="left">
  <img src="uploads/shot1.png" width="500"/>
 </p>
+
+## Routes
+
+- GET/POST
+
+`localhost:3050/api/v1/news`
+
+- Remove
+
+`localhost:3050/api/v1/news/ID`
+
+- Put
+`localhost:3050/api/v1/news/ID`
+
 
 ## License
 This project is licensed under the terms of the MIT license. See the LICENSE file.
