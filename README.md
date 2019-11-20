@@ -15,7 +15,7 @@
 </p>
 
 ## Motivation
-This repository is a REST API made em TypeScript with Docker, Redis and MongoDB.
+This project is a REST API made in TypeScript (JavaScript super set) with Docker containers, Redis to caching and MongoDB as database.
 
 ## Installation
 
@@ -25,6 +25,7 @@ This repository is a REST API made em TypeScript with Docker, Redis and MongoDB.
 You will need get Docker: https://www.docker.com/ to run the following steps.
 
 - Turning up
+
 `docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/mongodb`
 
 `docker run -d -p 6379:6379 redis`
@@ -39,16 +40,10 @@ You will need get Docker: https://www.docker.com/ to run the following steps.
 
 `npm start`
 
-Now, the server is running on port 3050
+- Now, the server is running on port 3050 and is available on browser
 <p align="center">
- <img src="uploads/shot1.png" width="250"/>
+ <img src="uploads/shot1.png" width="500"/>
 </p>
-
-
-
- 
- 
-
 
 ## License
 This project is licensed under the terms of the MIT license. See the LICENSE file.
